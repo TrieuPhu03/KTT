@@ -43,7 +43,7 @@ class StudentModel
     }
 
     //function add product
-    public function addStudent($HoTen, $GioiTinh, $NgaySinh, $MaNganh, $Hinh)
+    public function addStudent($MaSV, $HoTen, $GioiTinh, $NgaySinh, $MaNganh, $Hinh)
     {
         $errors = [];
 
@@ -62,8 +62,10 @@ class StudentModel
             return $errors;
         }
 
-        $query = "INSERT INTO sinhvien (MaSV, HoTen, GioiTinh, NgaySinh, MaNganh, Hinh) VALUES (:MaSV, :HoTen, :GioiTinh, :NgaySinh, :MaNganh, :Hinh)";
+        $query = "INSERT INTO sinhvien (MaSV, HoTen, GioiTinh, NgaySinh, MaNganh, Hinh) 
+              VALUES (:MaSV, :HoTen, :GioiTinh, :NgaySinh, :MaNganh, :Hinh)";
         $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':MaSV', $MaSV);
         $stmt->bindParam(':HoTen', $HoTen);
         $stmt->bindParam(':GioiTinh', $GioiTinh);
         $stmt->bindParam(':NgaySinh', $NgaySinh);

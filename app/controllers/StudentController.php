@@ -67,7 +67,7 @@ class StudentController
                 $Hinh = $imagePath; // Lưu đường dẫn này vào database
             }
 
-            $result = $this->studentModel->addStudent($HoTen, $GioiTinh, $NgaySinh, $MaSV, $Hinh);
+            $result = $this->studentModel->addStudent($MaSV, $HoTen, $GioiTinh, $NgaySinh, $MaNganh, $Hinh);
 
             if (is_array($result)) {
                 $errors = $result;
